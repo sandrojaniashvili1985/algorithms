@@ -22,9 +22,3 @@ def merge(left,right):
   result += left[i:]
   result += right[j:]
   return result
-
-print(merge_sort([3,6,8,10,1,2,1]))
-
-
-
-

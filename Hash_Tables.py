@@ -1,0 +1,39 @@
+class Hashtable:
+  def __init__(self):
+    self.size = 10
+    self.keys = [None] * self.size
+    self.value = [None] * self.size
+    
+  def put(self,key,data):
+    index = self.hesh_function(key)
+    while self.keys[index] is not None:
+      if self.keys[index] == key:
+        self.value[index] = data
+        return
+      
+      index = (index + 1) % self.size
+    self.keys[index] = key
+    self.value[index] = data
+  
+    
+  def get(self,key):
+    index = self.hesh_function(key)
+    while self.keys is not None:
+      if self.keys[index] == key:
+        return self.value[index]
+      index = (index + 1) % self.size
+    return None
+    
+    
+  def hesh_function(self,key):
+    sum = 0
+    for pos in range(len(key)):
+      sum += ord(key[pos])
+    return sum % self.size
+  
+  
+t = Hashtable()
+t.put("apple", 10)
+t.put("orange", 20)
+t.put("banana", 30)
+print(t.get("orange"))
